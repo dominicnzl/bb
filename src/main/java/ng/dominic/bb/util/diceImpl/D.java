@@ -6,16 +6,23 @@ import org.javatuples.Pair;
 
 import java.util.Random;
 
-public class D6 implements Dice {
+public class D implements Dice {
+
+    private final int faces;
+
+    public D(int faces) {
+        this.faces = faces;
+    }
+
     @Override
     public int faces() {
-        return 6;
+        return faces;
     }
 
     @Override
     public Pair<Integer, DiceValue> roll() {
         var r = new Random();
-        var outcome = 1 + r.nextInt(faces());
-        return Pair.with(outcome, DiceValue.NUMERIC);
+        var result = 1 + r.nextInt(faces);
+        return Pair.with(result, DiceValue.NUMERIC);
     }
 }

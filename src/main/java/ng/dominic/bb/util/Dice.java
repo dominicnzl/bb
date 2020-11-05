@@ -1,6 +1,6 @@
 package ng.dominic.bb.util;
 
-import java.util.Map;
+import org.javatuples.Pair;
 
 public interface Dice {
 
@@ -12,10 +12,5 @@ public interface Dice {
     /**
      * @return The index of the die face, counting from 1. With normal dice, the index of the face equals the value.
      */
-    int roll();
-
-    // TODO: 05/11/2020 -> still have to think about how to partition the face and the value of a roll. Perhaps the roll should return a valuepair instead of int
-    default Map<Integer, String> value(int rolled) {
-        return Map.of(rolled, String.valueOf(rolled));
-    }
+    Pair<Integer, DiceValue> roll();
 }

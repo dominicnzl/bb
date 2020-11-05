@@ -1,5 +1,7 @@
 package ng.dominic.bb.util;
 
+import org.javatuples.Pair;
+
 import java.util.Arrays;
 import java.util.stream.IntStream;
 
@@ -12,6 +14,7 @@ public class Result {
     public Result(Dice... dice) {
         values = Arrays.stream(dice)
                 .map(Dice::roll)
+                .map(Pair::getValue0)
                 .flatMapToInt(IntStream::of)
                 .toArray();
         sum = dice.length == 1 ? values[0] : Arrays.stream(values).sum();

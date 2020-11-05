@@ -6,7 +6,10 @@ import org.javatuples.Pair;
 
 import java.util.Random;
 
-public class D6 implements Dice {
+/**
+ * This die has 10% chance of rolling any value from 1 to 5 and 40% chance of rolling 6. ;)
+ */
+public class CheatyDice implements Dice {
     @Override
     public int faces() {
         return 6;
@@ -15,7 +18,7 @@ public class D6 implements Dice {
     @Override
     public Pair<Integer, DiceValue> roll() {
         var r = new Random();
-        var outcome = 1 + r.nextInt(faces());
-        return Pair.with(outcome, DiceValue.NUMERIC);
+        var result = 1 + r.nextInt(10);
+        return Pair.with(Math.min(result, 6), DiceValue.NUMERIC);
     }
 }

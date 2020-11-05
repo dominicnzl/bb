@@ -19,7 +19,7 @@ class D6Test {
     @Test
     @DisplayName("The result should be between 1 and 6")
     void roll() {
-        int result = new D6().roll();
+        var result = new D6().roll().getValue0();
         logger.info("Dice roll was {}", result);
         Assertions.assertTrue(result >= 1 && result <= 6);
     }

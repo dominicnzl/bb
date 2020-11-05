@@ -21,7 +21,8 @@ class D100Test {
     @Test
     @DisplayName("The value range of a D100 is between 1 and 100 inclusive")
     void roll() {
-        var result = new D100().roll();
+        var result = new D100().roll().getValue0();
+        logger.info("The result was {}", result);
         Assertions.assertTrue(result >= 1 && result <= 100);
     }
 }

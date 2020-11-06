@@ -3,28 +3,33 @@ package ng.dominic.bb.util;
 import org.javatuples.Pair;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Result {
 
-    private int[] values;
+    private List<Pair<Integer, DiceValue>> values;
 
     private int sum;
 
     public Result(Dice... dice) {
         values = Arrays.stream(dice)
                 .map(Dice::roll)
-                .map(Pair::getValue0)
-                .flatMapToInt(IntStream::of)
-                .toArray();
-        sum = dice.length == 1 ? values[0] : Arrays.stream(values).sum();
+                .collect(Collectors.toList());
+        sum = dice.length == 1
+                ? values.get(0).getValue0()
+                : values.stream().mapToInt(Pair::getValue0).reduce(0, Integer::sum);
     }
 
-    public int[] getValues() {
+    public void clear() {
+        values.clear();
+    }
+
+    public List<Pair<Integer, DiceValue>> getValues() {
         return values;
     }
 
-    public void setValues(int[] values) {
+    public void setValues(List<Pair<Integer, DiceValue>> values) {
         this.values = values;
     }
 

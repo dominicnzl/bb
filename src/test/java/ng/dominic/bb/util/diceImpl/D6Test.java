@@ -1,5 +1,6 @@
 package ng.dominic.bb.util.diceImpl;
 
+import ng.dominic.bb.util.DiceValue;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,11 +18,14 @@ class D6Test {
     }
 
     @Test
-    @DisplayName("The result should be between 1 and 6")
+    @DisplayName("The result should be between 1 and 6 and the DiceValue should be Numeric")
     void roll() {
-        var result = new D6().roll().getValue0();
-        logger.info("Dice roll was {}", result);
+        var rolled = new D6().roll();
+        var result = rolled.getValue0();
+        var value = rolled.getValue1();
+        logger.info("Dice roll was {} and the value is {}", result, value);
         Assertions.assertTrue(result >= 1 && result <= 6);
+        Assertions.assertSame(value, DiceValue.NUMERIC);
     }
 
     @Test

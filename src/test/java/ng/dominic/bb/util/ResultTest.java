@@ -6,7 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import static ng.dominic.bb.util.DiceFactory.*;
+import static ng.dominic.bb.util.DiceFactory.d;
+import static ng.dominic.bb.util.DiceFactory.create;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -27,10 +28,11 @@ class ResultTest {
     @DisplayName("The result of a D6 roll should be one value between 1 and 6")
     public void D6Result() {
         var r = new Result(create("D6"));
-        logger.info("The result has {} values", + r.getValues().length);
-        assertEquals(1, r.getValues().length);
+        var size = r.getValues().size();
+        logger.info("The result has {} values", + size);
+        assertEquals(1, size);
 
-        int result = r.getValues()[0];
+        int result = r.getValues().get(0).getValue0();
         logger.info("The result is {}", result);
         assertTrue(result >= 1 && result <= 6);
     }
@@ -39,15 +41,16 @@ class ResultTest {
     @DisplayName("Testing two D6")
     public void _2D6Result() {
         var r = new Result(create("D6"), create("D6"));
-        logger.info("The result has {} values", r.getValues().length);
-        assertEquals(2, r.getValues().length);
+        var size = r.getValues().size();
+        logger.info("The result has {} values", size);
+        assertEquals(2, size);
 
         var sum = r.getSum();
         logger.info("The sum of the result is {}", sum);
         assertTrue(sum >= 2 && sum <= 12);
 
-        for (int i = 0; i < r.getValues().length; i++) {
-            var result = r.getValues()[i];
+        for (int i = 0; i < size; i++) {
+            var result = r.getValues().get(i).getValue0();
             logger.info("The result was {}", result);
             assertTrue(result >= 1 && result <= 6);
         }
@@ -69,5 +72,14 @@ class ResultTest {
         for (int i = 0; i < 100; i++) {
             _2D6Result();
         }
+    }
+
+    @Test
+    @DisplayName("After clearing the Result should have no values")
+    public void clearTest() {
+        var result = new Result(create("D6"), d(6));
+        Assertions.assertTrue(result.getValues().size() > 0);
+        result.clear();
+        Assertions.assertTrue(result.getValues().isEmpty());
     }
 }

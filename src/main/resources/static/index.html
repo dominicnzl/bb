@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dice roll test</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="container">
+    <h1>Roll the dice:</h1>
+    <button class="rollDice" onclick="roll()">Click here</button>
+    <div id="diceResult" class="showRoll">Placeholder</div>
+</div>
+<script>
+    function roll() {
+        fetch("http://localhost:8080/roll")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                let result = data.values[0].value0;
+                let value = data.values[0].value1;
+                document.getElementById("diceResult").innerText = `Rolled a ${result} - ${value}`;
+            })
+            .catch(err => console.log(err));
+    }
+</script>
+</body>
+</html>

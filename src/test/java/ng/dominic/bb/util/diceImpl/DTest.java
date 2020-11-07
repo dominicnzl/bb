@@ -9,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class DTest {
 
     Logger logger = LoggerFactory.getLogger(DTest.class);
@@ -40,7 +38,7 @@ class DTest {
     private void roll(Dice dice) {
         var rolled = dice.roll();
         var result = rolled.getValue0();
-        var faces = dice.faces();
+        var faces = dice.getFaces();
         logger.info("The dice roll is {} while the max value is {}", result, faces);
         Assertions.assertTrue(result >= 1 && result <= faces);
     }

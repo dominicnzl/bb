@@ -22,7 +22,7 @@
                 console.log(data);
                 let result = data.values[0].value0;
                 let value = data.values[0].value1;
-                document.getElementById("diceResult").innerText = `Rolled a ${result} - ${value}`;
+                document.getElementById("diceResult").innerText = `Rolled a ${result} (${value})`;
             })
             .catch(err => console.log(err));
     }

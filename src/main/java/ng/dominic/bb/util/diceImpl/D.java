@@ -6,16 +6,14 @@ import org.javatuples.Pair;
 
 import java.util.Random;
 
-public class D implements Dice {
-
-    private final int faces;
+public class D extends Dice {
 
     public D(int faces) {
         this.faces = faces;
     }
 
     @Override
-    public int faces() {
+    public int getFaces() {
         return faces;
     }
 

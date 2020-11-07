@@ -17,7 +17,7 @@ class TrafficLightDiceTest {
     @Test
     @DisplayName("The traffic light dice can have 3 states")
     void faces() {
-        Assertions.assertEquals(3, new TrafficLightDice().faces());
+        Assertions.assertEquals(3, new TrafficLightDice().getFaces());
     }
 
     @Test

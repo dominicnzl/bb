@@ -9,9 +9,10 @@ import java.util.Random;
 /**
  * This die has 10% chance of rolling any value from 1 to 5 and 40% chance of rolling 6. ;)
  */
-public class CheatyDice implements Dice {
+public class CheatyDice extends Dice {
+
     @Override
-    public int faces() {
+    public int getFaces() {
         return 6;
     }
 

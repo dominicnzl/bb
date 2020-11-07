@@ -13,7 +13,7 @@ class D100Test {
     @Test
     @DisplayName("D100 should have 100 faces")
     void faces() {
-        var faces = new D100().faces();
+        var faces = new D100().getFaces();
         logger.info("D100 has {} faces", faces);
         Assertions.assertEquals(100, faces);
     }

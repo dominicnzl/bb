@@ -14,7 +14,7 @@ class D6Test {
     @Test
     @DisplayName("The number of faces should be 6")
     void faces() {
-        Assertions.assertEquals(6, new D6().faces());
+        Assertions.assertEquals(6, new D6().getFaces());
     }
 
     @Test

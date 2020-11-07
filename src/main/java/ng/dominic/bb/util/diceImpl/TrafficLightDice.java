@@ -6,9 +6,10 @@ import org.javatuples.Pair;
 
 import java.util.Random;
 
-public class TrafficLightDice implements Dice {
+public class TrafficLightDice extends Dice {
+
     @Override
-    public int faces() {
+    public int getFaces() {
         return 3;
     }
 

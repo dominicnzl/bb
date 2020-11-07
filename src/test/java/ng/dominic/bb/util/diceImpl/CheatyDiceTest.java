@@ -14,7 +14,7 @@ class CheatyDiceTest {
 
     @Test
     void faces() {
-        Assertions.assertEquals(6, new CheatyDice().faces());
+        Assertions.assertEquals(6, new CheatyDice().getFaces());
     }
 
     @Test

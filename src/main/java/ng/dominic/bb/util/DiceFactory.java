@@ -10,7 +10,7 @@ public class DiceFactory {
         return switch (type) {
             case "D6" -> new D6();
             case "D100" -> new D100();
-            case "TrafficLight" -> new TrafficLightDice();
+            case "TrafficLightDice" -> new TrafficLightDice();
             case "CheatyDice" -> new CheatyDice();
             default -> throw new IllegalArgumentException("Type not specified");
         };

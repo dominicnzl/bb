@@ -1,6 +1,5 @@
 package ng.dominic.bb.util.diceImpl;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -8,13 +7,15 @@ import org.slf4j.LoggerFactory;
 
 import java.util.stream.IntStream;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class CheatyDiceTest {
 
     Logger logger = LoggerFactory.getLogger(CheatyDiceTest.class);
 
     @Test
     void faces() {
-        Assertions.assertEquals(6, new CheatyDice().getFaces());
+        assertEquals(6, new CheatyDice().getFaces());
     }
 
     @Test

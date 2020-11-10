@@ -1,13 +1,17 @@
 package ng.dominic.bb.util.diceImpl;
 
 import ng.dominic.bb.util.Dice;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DTest {
 
@@ -40,6 +44,6 @@ class DTest {
         var result = rolled.getValue0();
         var faces = dice.getFaces();
         logger.info("The dice roll is {} while the max value is {}", result, faces);
-        Assertions.assertTrue(result >= 1 && result <= faces);
+        assertTrue(result >= 1 && result <= faces);
     }
 }

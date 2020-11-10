@@ -1,11 +1,12 @@
 package ng.dominic.bb.util.diceImpl;
 
 import ng.dominic.bb.util.DiceValue;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 class D6Test {
 
@@ -14,7 +15,7 @@ class D6Test {
     @Test
     @DisplayName("The number of faces should be 6")
     void faces() {
-        Assertions.assertEquals(6, new D6().getFaces());
+        assertEquals(6, new D6().getFaces());
     }
 
     @Test
@@ -24,8 +25,8 @@ class D6Test {
         var result = rolled.getValue0();
         var value = rolled.getValue1();
         logger.info("Dice roll was {} and the value is {}", result, value);
-        Assertions.assertTrue(result >= 1 && result <= 6);
-        Assertions.assertSame(value, DiceValue.NUMERIC);
+        assertTrue(result >= 1 && result <= 6);
+        assertSame(value, DiceValue.NUMERIC);
     }
 
     @Test

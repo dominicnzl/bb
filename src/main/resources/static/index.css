@@ -17,6 +17,10 @@
     border-style: none;
     box-shadow: 1px 1px #b85b1f;
 }
+.rollBtn:hover {
+    background-color: #b85b1f;
+    box-shadow: 1px 1px #2E5C64;
+}
 .resultsDiv {
     color: #fff;
     background-color: #3F7C86;

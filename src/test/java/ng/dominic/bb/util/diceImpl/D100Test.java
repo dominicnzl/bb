@@ -1,10 +1,12 @@
 package ng.dominic.bb.util.diceImpl;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class D100Test {
 
@@ -15,7 +17,7 @@ class D100Test {
     void faces() {
         var faces = new D100().getFaces();
         logger.info("D100 has {} faces", faces);
-        Assertions.assertEquals(100, faces);
+        assertEquals(100, faces);
     }
 
     @Test
@@ -23,6 +25,6 @@ class D100Test {
     void roll() {
         var result = new D100().roll().getValue0();
         logger.info("The result was {}", result);
-        Assertions.assertTrue(result >= 1 && result <= 100);
+        assertTrue(result >= 1 && result <= 100);
     }
 }

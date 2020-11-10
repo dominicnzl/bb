@@ -1,6 +1,5 @@
 package ng.dominic.bb.util;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -8,8 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ResultTest {
@@ -24,8 +22,8 @@ class ResultTest {
     public void nullTest() {
         logger.info("Feeding null -> getValues is nonnull and sum is 0");
         var r = new Result();
-        Assertions.assertNotNull(r.getValues());
-        Assertions.assertEquals(0, r.getSum());
+        assertNotNull(r.getValues());
+        assertEquals(0, r.getSum());
     }
 
     @Test
@@ -82,8 +80,8 @@ class ResultTest {
     @DisplayName("After clearing the Result should have no values")
     public void clearTest() {
         var result = new Result(diceFactory.create("D6"), diceFactory.d(6));
-        Assertions.assertTrue(result.getValues().size() > 0);
+        assertTrue(result.getValues().size() > 0);
         result.clear();
-        Assertions.assertTrue(result.getValues().isEmpty());
+        assertTrue(result.getValues().isEmpty());
     }
 }

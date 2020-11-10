@@ -2,9 +2,7 @@ function populateList() {
     fetch("http://localhost:8080/choices")
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             for (const val of data) {
-                console.log(val);
                 const option = document.createElement("OPTION");
                 option.value = val;
                 option.text = val;
@@ -12,7 +10,6 @@ function populateList() {
             }
         });
 }
-
 
 async function roll() {
     try {
@@ -23,7 +20,7 @@ async function roll() {
         let value = json.values[0].value1;
         addDiv(result, value);
     } catch (error) {
-        console.log(error);
+        console.log(`Something went wrong in the roll() function: ${error}`);
     }
 }
 

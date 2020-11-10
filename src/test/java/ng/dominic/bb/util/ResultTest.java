@@ -5,15 +5,19 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import static ng.dominic.bb.util.DiceFactory.d;
-import static ng.dominic.bb.util.DiceFactory.create;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@SpringBootTest
 class ResultTest {
 
     Logger logger = LoggerFactory.getLogger(ResultTest.class);
+
+    @Autowired
+    private DiceFactory diceFactory;
 
     @Test
     @DisplayName("Result of null Dice")
@@ -27,7 +31,7 @@ class ResultTest {
     @Test
     @DisplayName("The result of a D6 roll should be one value between 1 and 6")
     public void D6Result() {
-        var r = new Result(create("D6"));
+        var r = new Result(diceFactory.create("D6"));
         var size = r.getValues().size();
         logger.info("The result has {} values", + size);
         assertEquals(1, size);
@@ -40,7 +44,7 @@ class ResultTest {
     @Test
     @DisplayName("Testing two D6")
     public void _2D6Result() {
-        var r = new Result(create("D6"), create("D6"));
+        var r = new Result(diceFactory.create("D6"), diceFactory.create("D6"));
         var size = r.getValues().size();
         logger.info("The result has {} values", size);
         assertEquals(2, size);
@@ -77,7 +81,7 @@ class ResultTest {
     @Test
     @DisplayName("After clearing the Result should have no values")
     public void clearTest() {
-        var result = new Result(create("D6"), d(6));
+        var result = new Result(diceFactory.create("D6"), diceFactory.d(6));
         Assertions.assertTrue(result.getValues().size() > 0);
         result.clear();
         Assertions.assertTrue(result.getValues().isEmpty());

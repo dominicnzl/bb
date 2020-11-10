@@ -30,7 +30,7 @@ public class DiceController {
         chosenDice = chosenDice == null || chosenDice.isEmpty()
                 ? "D6"
                 : chosenDice;
-        var d = DiceFactory.create(chosenDice);
+        var d = diceFactory.create(chosenDice);
         logger.info("Dice created was: {}", d);
         return new Result(d);
     }
@@ -38,9 +38,9 @@ public class DiceController {
     @GetMapping("/choices")
     public List<String> diceChoices() {
         return List.of(
-                CheatyDice.class.getSimpleName(),
                 D6.class.getSimpleName(),
                 D100.class.getSimpleName(),
+                CheatyDice.class.getSimpleName(),
                 TrafficLightDice.class.getSimpleName());
     }
 }

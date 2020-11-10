@@ -6,15 +6,18 @@
     max-width: 700px;
     padding: 10px;
     border-radius: 5px;
+    box-shadow: 2px 2px #b85b1f;
 }
-.rollDice {
+.rollBtn {
     color: #fff;
     background-color: #2E5C64;
     padding: 10px;
     margin: 2px;
     border-radius: 5px;
+    border-style: none;
+    box-shadow: 1px 1px #b85b1f;
 }
-.showRoll {
+.resultsDiv {
     color: #fff;
     background-color: #3F7C86;
     padding: 10px;
@@ -30,4 +33,7 @@ form {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+body {
+    background-color: #2f343f;
 }

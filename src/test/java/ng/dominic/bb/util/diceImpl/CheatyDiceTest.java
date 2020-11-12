@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CheatyDiceTest {
 
@@ -26,6 +27,7 @@ class CheatyDiceTest {
                         ? "Rolled a {}, how lucky!"
                         : "Rolled a {}"
                 , result);
+        assertTrue(result >= 1 && result <= 6);
     }
 
     @Test

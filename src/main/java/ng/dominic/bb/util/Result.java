@@ -18,7 +18,14 @@ public class Result {
                 .collect(Collectors.toList());
         sum = dice.length == 1
                 ? values.get(0).getValue0()
-                : values.stream().mapToInt(Pair::getValue0).reduce(0, Integer::sum);
+                : getSumOfValue0();
+    }
+
+    // where value0 is the Integer in Pair<Integer, DiceValue>
+    private int getSumOfValue0() {
+        return values.stream()
+                .mapToInt(Pair::getValue0)
+                .reduce(0, Integer::sum);
     }
 
     public void clear() {

@@ -10,7 +10,7 @@
 }
 .rollBtn {
     color: #fff;
-    background-color: #2E5C64;
+    background-color: #3F7C86;
     padding: 10px;
     margin: 2px;
     border-radius: 5px;
@@ -18,8 +18,12 @@
     box-shadow: 1px 1px #b85b1f;
 }
 .rollBtn:hover {
-    background-color: #b85b1f;
+    background-color: #2E5C64;
     box-shadow: 1px 1px #2E5C64;
+}
+.rollBtn:active {
+    background-color: #b85b1f;
+    transform: translateY(2px);
 }
 .resultsDiv {
     color: #fff;

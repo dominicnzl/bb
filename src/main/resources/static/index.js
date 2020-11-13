@@ -1,7 +1,8 @@
 function init() {
     getChoices()
         .then(turnToJson)
-        .then(createDraggableButtons);
+        .then(createDraggableButtons)
+        .catch(handleErrors);
 }
 
 async function getChoices() {
@@ -41,6 +42,10 @@ function createBtn(diceName, counter) {
     btn.setAttribute("draggable", "true");
     btn.addEventListener("dragstart", dragEvent => drag(dragEvent));
     document.getElementById("dicePool").appendChild(btn);
+}
+
+function handleErrors(error) {
+    console.log(`Something went wrong during init(): ${error}`);
 }
 
 function diceInHand() {

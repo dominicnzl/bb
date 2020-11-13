@@ -9,20 +9,29 @@
     <link rel="stylesheet" href="index.css">
     <script src="index.js"></script>
 </head>
-<body onload="populateList()">
+<body onload="init()">
 <div class="container">
     <h1>Crazy dice:</h1>
-    <form action="">
-        <label for="diceSelectId"></label>
-        <select name="diceSelect" id="diceSelectId">
-        </select>
+    <div id="dicePool">
         <input id="rollDiceBtn" type="button" value="Roll" class="rollBtn">
-    </form>
+    </div>
+    <div id="diceInHand"></div>
     <div id="diceResult" class="resultsDiv">Results</div>
 </div>
-<script>
+<script id="scripts">
+    const dicePool = document.getElementById("dicePool");
+    dicePool.addEventListener("drop", dragEvent => drop(dragEvent));
+    dicePool.addEventListener("drop", () => toggleGlow());
+    dicePool.addEventListener("dragover", dragEvent => allowDrop(dragEvent));
+
+    const hand = document.getElementById("diceInHand");
+    hand.addEventListener("drop", dragEvent => drop(dragEvent));
+    hand.addEventListener("drop", () => toggleGlow());
+    hand.addEventListener("dragover", dragEvent => allowDrop(dragEvent));
+
     const rollButton = document.getElementById("rollDiceBtn");
-    rollButton.addEventListener("click", () => roll());
+
+    rollButton.addEventListener("click", () => roll(diceInHand()));
 </script>
 </body>
 </html>

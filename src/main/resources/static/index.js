@@ -1,7 +1,7 @@
 function init() {
     getChoices()
         .then(turnToJson)
-        .then(json => createDraggableButtons(json));
+        .then(createDraggableButtons);
 }
 
 async function getChoices() {
@@ -110,12 +110,10 @@ function drop(e) {
 }
 
 function toggleGlow() {
-    // this is the only place that lights up, for now
+    // this is the only place that lights up, for now. The only child elements are Dice, for the moment.
     const hand = document.getElementById("diceInHand");
-    console.log(`toggle glow ${hand.childElementCount}`);
-    if (hand.childElementCount > 0) {
-        hand.setAttribute("class", "ul-glow");
-    } else {
-        hand.setAttribute("class", "");
-    }
+    let shouldGlow = hand.childElementCount > 0
+        ? "ul-glow"
+        : "";
+    hand.setAttribute("class", shouldGlow);
 }

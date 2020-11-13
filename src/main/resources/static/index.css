@@ -67,6 +67,10 @@
     padding: 10px;
     border: 1px dotted whitesmoke;
 }
+#diceInHand:empty:not(:focus):before {
+    content: attr(data-text);
+    color: whitesmoke;
+}
 H1 {
     color: aliceblue;
     font-family: "Bradley Hand ITC", fantasy;

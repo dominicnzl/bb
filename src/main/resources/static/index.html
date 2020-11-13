@@ -15,7 +15,7 @@
     <div id="dicePool">
         <input id="rollDiceBtn" type="button" value="Roll" class="rollBtn">
     </div>
-    <div id="diceInHand"></div>
+    <div id="diceInHand" data-text="Drag dice in here"></div>
     <div id="diceResult" class="resultsDiv">Results</div>
 </div>
 <script id="scripts">
@@ -30,7 +30,6 @@
     hand.addEventListener("dragover", dragEvent => allowDrop(dragEvent));
 
     const rollButton = document.getElementById("rollDiceBtn");
-
     rollButton.addEventListener("click", () => roll(diceInHand()));
 </script>
 </body>

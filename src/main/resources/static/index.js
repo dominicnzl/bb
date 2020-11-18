@@ -6,10 +6,11 @@ function init() {
 }
 
 async function getChoices() {
-    try {
-        return await fetch("http://localhost:8080/choices");
-    } catch (e) {
-        console.log(`Something went wrong at the fetch: ${e}`)
+    let choices = await fetch("http://localhost:8080/choices");
+    if (!choices.ok) {
+        throw new Error(`Something went wrong at the fetch: ${choices.status}, ${choices.statusText}`);
+    } else {
+        return choices;
     }
 }
 

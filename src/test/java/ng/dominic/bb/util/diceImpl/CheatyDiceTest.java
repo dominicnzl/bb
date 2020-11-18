@@ -5,8 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.stream.IntStream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -33,6 +31,8 @@ class CheatyDiceTest {
     @Test
     @DisplayName("Are you sure you're supposed to roll so many 6s?")
     void many() {
-        IntStream.range(0, 100).forEach(i -> roll());
+        for (int i = 0; i < 100; i++) {
+            roll();
+        }
     }
 }

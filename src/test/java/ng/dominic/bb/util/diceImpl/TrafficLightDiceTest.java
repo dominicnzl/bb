@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
-import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -31,6 +30,8 @@ class TrafficLightDiceTest {
 
     @Test
     void many() {
-        IntStream.range(0, 100).forEach(i -> roll());
+        for (int i = 0; i < 100; i++) {
+            roll();
+        }
     }
 }

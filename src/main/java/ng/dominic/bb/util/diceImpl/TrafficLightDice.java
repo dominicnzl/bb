@@ -3,9 +3,11 @@ package ng.dominic.bb.util.diceImpl;
 import ng.dominic.bb.util.Dice;
 import ng.dominic.bb.util.DiceValue;
 import org.javatuples.Pair;
+import org.springframework.stereotype.Component;
 
 import java.util.Random;
 
+@Component
 public class TrafficLightDice extends Dice {
 
     @Override

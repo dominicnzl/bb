@@ -27,7 +27,7 @@ public class DiceController {
     }
 
     @GetMapping("/roll/{chosenDice}")
-    public Result roll(@PathVariable String chosenDice) {
+    public Result rollSpecific(@PathVariable String chosenDice) {
         chosenDice = chosenDice == null || chosenDice.isEmpty()
                 ? "D6"
                 : chosenDice;
@@ -43,7 +43,7 @@ public class DiceController {
 
     @PostMapping(value = "/roll", consumes = {MediaType.APPLICATION_JSON_VALUE})
     @ResponseStatus(value = HttpStatus.OK)
-    public Result rickRoll(@RequestBody String json) {
+    public Result roll(@RequestBody String json) {
         try {
             var objectMapper = new ObjectMapper();
             var rootNode = objectMapper.readTree(json);

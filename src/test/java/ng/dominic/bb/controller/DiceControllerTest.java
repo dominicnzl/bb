@@ -19,7 +19,7 @@ class DiceControllerTest {
 
     @Test
     void roll() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/roll/D6"))
+        mockMvc.perform(MockMvcRequestBuilders.get("/roll/d6"))
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON));

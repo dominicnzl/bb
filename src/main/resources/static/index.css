@@ -1,0 +1,81 @@
+.container {
+    font-family: fantasy;
+    margin: auto;
+    color: #eee;
+    background-color: #559EAA;
+    width: 500px;
+    max-width: 700px;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px #b85b1f;
+}
+.rollBtn {
+    color: #fff;
+    background-color: #3F7C86;
+    padding: 10px;
+    margin: 2px;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: 1px 1px #b85b1f;
+}
+.rollBtn:hover {
+    background-color: #2E5C64;
+    box-shadow: 1px 1px #2E5C64;
+}
+.rollBtn:active {
+    background-color: #b85b1f;
+    transform: translateY(2px);
+}
+.resultsDiv {
+    color: #fff;
+    background-color: #3F7C86;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 2px;
+}
+.btn-die {
+    color: #fff;
+    background-color: #b85b1f;
+    padding: 10px;
+    margin: 2px;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: 1px 1px #3F7C86;
+}
+.ul-glow {
+    outline: none;
+    border-color: #9ECAED;
+    box-shadow: 0 0 10px #9ECAED;
+}
+.selectAndRoll {
+    padding: 10px;
+    margin: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+#dicePool {
+    width: 456px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+}
+#diceInHand {
+    width: 456px;
+    height: 35px;
+    margin: 10px;
+    padding: 10px;
+    border: 1px dotted whitesmoke;
+}
+#diceInHand:empty:not(:focus):before {
+    content: attr(data-text);
+    color: whitesmoke;
+}
+H1 {
+    color: aliceblue;
+    font-family: "Bradley Hand ITC", fantasy;
+    text-align: center;
+}
+body {
+    background-color: #2F343F;
+}

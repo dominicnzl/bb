@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dice roll test</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+</head>
+<body onload="init()">
+<div class="container">
+    <h1>Crazy dice:</h1>
+    <div id="dicePool">
+        <input id="rollDiceBtn" type="button" value="Roll" class="rollBtn">
+    </div>
+    <div id="diceInHand" data-text="Drag dice in here"></div>
+    <div id="diceResult" class="resultsDiv">Results</div>
+</div>
+<script id="scripts">
+    const dicePool = document.getElementById("dicePool");
+    dicePool.addEventListener("drop", dragEvent => drop(dragEvent));
+    dicePool.addEventListener("drop", () => toggleGlow());
+    dicePool.addEventListener("dragover", dragEvent => allowDrop(dragEvent));
+
+    const hand = document.getElementById("diceInHand");
+    hand.addEventListener("drop", dragEvent => drop(dragEvent));
+    hand.addEventListener("drop", () => toggleGlow());
+    hand.addEventListener("dragover", dragEvent => allowDrop(dragEvent));
+
+    const rollButton = document.getElementById("rollDiceBtn");
+    rollButton.addEventListener("click", () => roll(diceInHand()));
+</script>
+</body>
+</html>

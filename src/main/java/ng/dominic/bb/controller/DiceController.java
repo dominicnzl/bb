@@ -1,17 +1,15 @@
 package ng.dominic.bb.controller;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
 import ng.dominic.bb.util.Dice;
 import ng.dominic.bb.util.Result;
-import ng.dominic.bb.util.diceImpl.D6;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,23 +43,14 @@ public class DiceController {
     @ResponseStatus(value = HttpStatus.OK)
     public Result roll(@RequestBody String json) {
         try {
-            var objectMapper = new ObjectMapper();
-            var rootNode = objectMapper.readTree(json);
-            var diceNode = rootNode.get("dice");
-            var chosenDice = new ArrayList<String>();
-            if (diceNode.isArray()) {
-                for (JsonNode die : diceNode) {
-                    logger.info("Dice created was: {}", die);
-                    chosenDice.add(die.textValue());
-                }
-            }
-            Dice[] dice = chosenDice.stream()
+            List<String> diceNames = JsonPath.read(json, "$.dice[*]");
+            var dice = diceNames.stream()
                     .map(diceMap::get)
                     .toArray(Dice[]::new);
             return new Result(dice);
         } catch (Exception e) {
             logger.warn("Input argument did not parse correctly, returned a D6 Result: {}", e.getMessage());
-            return new Result(new D6());
+            return new Result(diceMap.get("d6"));
         }
     }
 }

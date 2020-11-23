@@ -5,8 +5,6 @@ import ng.dominic.bb.util.Dice;
 import ng.dominic.bb.util.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,8 +37,7 @@ public class DiceController {
         return diceMap.keySet();
     }
 
-    @PostMapping(value = "/roll", consumes = {MediaType.APPLICATION_JSON_VALUE})
-    @ResponseStatus(value = HttpStatus.OK)
+    @PostMapping(value = "/roll")
     public Result roll(@RequestBody String json) {
         try {
             List<String> diceNames = JsonPath.read(json, "$.dice[*]");

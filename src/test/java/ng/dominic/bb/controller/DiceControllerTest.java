@@ -8,6 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -66,7 +67,9 @@ class DiceControllerTest {
         mockMvc.perform(get("/choices"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[*]").isArray())
-                .andExpect(jsonPath("$[0]").isString());
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$[0]").isString())
+                .andExpect(jsonPath("$[*]").value(
+                        containsInAnyOrder("cheatyDice", "d", "d6", "d100", "trafficLightDice", "d16", "d25")));
     }
 }

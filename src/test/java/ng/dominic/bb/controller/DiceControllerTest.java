@@ -24,10 +24,15 @@ class DiceControllerTest {
     @Test
     @DisplayName("When rolling d6, expect status ok and expect to return json")
     void rollSpecific() throws Exception {
+        String rolledResult = "$.values[0].value0";
+        String diceValue = "$.values[0].value1";
         mockMvc.perform(get("/roll/d6"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.values").isArray())
+                .andExpect(jsonPath(rolledResult).isNumber())
+                .andExpect(jsonPath(diceValue).value(containsString("NUMERIC")));
     }
 
     @Test
@@ -60,6 +65,8 @@ class DiceControllerTest {
     void diceChoices() throws Exception {
         mockMvc.perform(get("/choices"))
                 .andDo(print())
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[*]").isArray())
+                .andExpect(jsonPath("$[0]").isString());
     }
 }

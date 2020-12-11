@@ -3,14 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Player Listpage</title>
+    <link rel="stylesheet" href="/css/player.css">
 </head>
 <body>
-<div>
-    <table>
+<div class="display">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Player name</th>
+            <th>MA</th>
+            <th>ST</th>
+            <th>AG</th>
+            <th>AV</th>
+            <th>PA</th>
+        </tr>
         <tr th:each="player : ${players}">
-            <p>
+            <td>
                 <a href="#" th:text="${player.name}" th:href="@{|/players/${player.id}|}">filler text</a>
-            </p>
+            </td>
+            <td th:text="${player.movementAllowance}"></td>
+            <td th:text="${player.strength}"></td>
+            <td th:text="${player.agility}"></td>
+            <td th:text="${player.armourValue}"></td>
+            <td th:text="${player.passing}"></td>
         </tr>
     </table>
 </div>

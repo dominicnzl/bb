@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Player Editpage</title>
+    <link rel="stylesheet" href="/css/player.css">
 </head>
 <body>
-<div th:object="${player}">
+<div class="display" th:object="${player}">
     hier komt de player editpage <span th:text="|voor ${player.name}|"></span>
 </div>
 </body>

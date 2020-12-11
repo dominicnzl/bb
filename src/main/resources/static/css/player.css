@@ -1,0 +1,68 @@
+/* stolen from https://react-bootstrap.github.io/components/table/ ;) */
+body {
+margin: 0;
+font-family: Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+font-size: 1rem;
+line-height: 1.5;
+}
+
+.table {
+width: 100%;
+margin-bottom: 1rem;
+color: #212529;
+padding: .75rem;
+}
+
+table {
+display: table;
+border-collapse: collapse;
+text-indent: initial;
+border-spacing: 2px;
+}
+
+thead {
+display: table-header-group;
+vertical-align: middle;
+border-color: inherit;
+}
+
+tr {
+display: table-row;
+vertical-align: inherit;
+border-color: inherit
+}
+
+th {
+border-bottom-width: 2px;
+vertical-align: bottom;
+border-bottom: 2px solid #dee2e6;
+}
+
+td {
+display: table-cell;
+text-align: center;
+}
+
+.table-bordered, .table-bordered td, .table-bordered th {
+border: 1px solid #dee2e6;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+background-color: rgba(0,0,0,.05);
+}
+
+*, :after, :before {
+box-sizing: border-box;
+}
+
+div.display {
+display: block;
+position: relative;
+padding: 1rem;
+border: .2rem solid #ececec;
+border-width: .2rem;
+border-radius: 8px;
+margin-right: 0;
+margin-left: 0;
+color: #212529
+}

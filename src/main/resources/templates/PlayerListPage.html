@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Player Listpage</title>
+</head>
+<body>
+<div>
+    <table>
+        <tr th:each="player : ${players}">
+            <p>
+                <a href="#" th:text="${player.name}" th:href="@{|/players/${player.id}|}">filler text</a>
+            </p>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

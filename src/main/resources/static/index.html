@@ -20,14 +20,14 @@
 </div>
 <script id="scripts">
     const dicePool = document.getElementById("dicePool");
-    dicePool.addEventListener("drop", dragEvent => drop(dragEvent));
+    dicePool.addEventListener("drop", drag => drop(drag));
     dicePool.addEventListener("drop", () => toggleGlow());
-    dicePool.addEventListener("dragover", dragEvent => allowDrop(dragEvent));
+    dicePool.addEventListener("dragover", drag => allowDrop(drag));
 
     const hand = document.getElementById("diceInHand");
-    hand.addEventListener("drop", dragEvent => drop(dragEvent));
+    hand.addEventListener("drop", drag => drop(drag));
     hand.addEventListener("drop", () => toggleGlow());
-    hand.addEventListener("dragover", dragEvent => allowDrop(dragEvent));
+    hand.addEventListener("dragover", drag => allowDrop(drag));
 
     const rollButton = document.getElementById("rollDiceBtn");
     rollButton.addEventListener("click", () => roll(diceInHand()));

@@ -41,7 +41,7 @@ function createBtn(diceName, counter) {
     btn.name = diceName;
     btn.setAttribute("class", "btn-die");
     btn.setAttribute("draggable", "true");
-    btn.addEventListener("dragstart", dragEvent => drag(dragEvent));
+    btn.addEventListener("dragstart", drag => drag(drag));
     document.getElementById("dicePool").appendChild(btn);
 }
 

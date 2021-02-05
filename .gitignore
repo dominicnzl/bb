@@ -38,3 +38,6 @@ build/
 /.mvn/wrapper/MavenWrapperDownloader.java
 /mvnw
 /mvnw.cmd
+
+.db.mv.db
+.db.trace.db

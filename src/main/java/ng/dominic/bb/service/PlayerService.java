@@ -12,7 +12,7 @@ import java.util.Optional;
 @Transactional
 public class PlayerService {
 
-    private PlayerRepo playerRepo;
+    private final PlayerRepo playerRepo;
 
     public PlayerService(PlayerRepo playerRepo) {
         this.playerRepo = playerRepo;

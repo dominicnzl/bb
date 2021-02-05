@@ -39,5 +39,4 @@ build/
 /mvnw
 /mvnw.cmd
 
-.db.mv.db
-.db.trace.db
+*.db

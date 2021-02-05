@@ -2,7 +2,9 @@ package ng.dominic.bb.controller;
 
 import ng.dominic.bb.exceptions.PlayerNotFoundException;
 import ng.dominic.bb.model.Player;
+import ng.dominic.bb.model.PlayerDTO;
 import ng.dominic.bb.service.PlayerService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -11,20 +13,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/players")
 public class PlayerController {
 
     private final PlayerService playerService;
+    private final ModelMapper modelMapper;
 
-    public PlayerController(PlayerService playerService) {
+    public PlayerController(PlayerService playerService, ModelMapper modelMapper) {
         this.playerService = playerService;
+        this.modelMapper = modelMapper;
+    }
+
+    private PlayerDTO convertToDTO(Player player) {
+        return modelMapper.map(player, PlayerDTO.class);
+    }
+
+    private Player convertToEntity(PlayerDTO dto) {
+        return modelMapper.map(dto, Player.class);
     }
 
     @GetMapping
-    public ResponseEntity<List<Player>> findAll() {
-        return ResponseEntity.ok(playerService.findAll());
+    public ResponseEntity<List<PlayerDTO>> findAll() {
+        var dto = playerService.findAll()
+                .stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(dto);
     }
 
     @GetMapping(produces = MediaType.TEXT_HTML_VALUE)
@@ -34,8 +51,9 @@ public class PlayerController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Player> findById(@PathVariable Long id) {
-        return ResponseEntity.of(playerService.findById(id));
+    public ResponseEntity<PlayerDTO> findById(@PathVariable Long id) {
+        var dto = playerService.findById(id).map(this::convertToDTO);
+        return ResponseEntity.of(dto);
     }
 
     @GetMapping(
@@ -48,29 +66,20 @@ public class PlayerController {
     }
 
     @PostMapping
-    public ResponseEntity<Player> save(@RequestBody Player player) {
-        return ResponseEntity.ok(playerService.save(player));
+    public ResponseEntity<PlayerDTO> save(@RequestBody PlayerDTO dto) {
+        var entity = convertToEntity(dto);
+        var savedEntity = playerService.save(entity);
+        return ResponseEntity.ok(convertToDTO(savedEntity));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Player> update(@RequestBody Player player, @PathVariable Long id) {
-        var foundPlayer = playerService.findById(id);
-        if (foundPlayer.isEmpty()) {
+    public ResponseEntity<PlayerDTO> update(@RequestBody PlayerDTO dto, @PathVariable Long id) {
+        if (playerService.findById(id).isEmpty()) {
             return ResponseEntity.notFound().build();
-        } else {
-            var updatedPlayer = copyValues(player, foundPlayer.get());
-            return ResponseEntity.ok(playerService.update(updatedPlayer));
         }
-    }
-
-    private Player copyValues(Player player, Player temp) {
-        temp.setName(player.getName());
-        temp.setMovementAllowance(player.getMovementAllowance());
-        temp.setStrength(player.getStrength());
-        temp.setAgility(player.getAgility());
-        temp.setArmourValue(player.getArmourValue());
-        temp.setPassing(player.getPassing());
-        return temp;
+        var entity = convertToEntity(dto);
+        var updatedEntity = playerService.update(entity);
+        return ResponseEntity.ok(convertToDTO(updatedEntity));
     }
 
     @DeleteMapping("/{id}")

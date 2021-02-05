@@ -1,5 +1,6 @@
 package ng.dominic.bb.controller;
 
+import ng.dominic.bb.exceptions.PlayerNotFoundException;
 import ng.dominic.bb.model.Player;
 import ng.dominic.bb.service.PlayerService;
 import org.springframework.http.HttpStatus;
@@ -15,7 +16,7 @@ import java.util.List;
 @RequestMapping("/players")
 public class PlayerController {
 
-    private PlayerService playerService;
+    private final PlayerService playerService;
 
     public PlayerController(PlayerService playerService) {
         this.playerService = playerService;
@@ -41,12 +42,9 @@ public class PlayerController {
             value = "/{id}",
             produces = MediaType.TEXT_HTML_VALUE)
     public String playerEditPage(Model model, @PathVariable Long id) {
-        if (playerService.findById(id).isEmpty()) {
-            return "not found";
-        } else {
-            model.addAttribute("player", playerService.findById(id).get());
-            return "PlayerEditPage.html";
-        }
+        var player = playerService.findById(id).orElseThrow(() -> new PlayerNotFoundException(id));
+        model.addAttribute("player", player);
+        return "PlayerEditPage.html";
     }
 
     @PostMapping

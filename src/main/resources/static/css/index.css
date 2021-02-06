@@ -1,10 +1,10 @@
 .container {
-    font-family: fantasy;
+    font-family: "Palatino", "Garamond" fantasy;
     margin: auto;
     color: #eee;
     background-color: #559EAA;
-    width: 500px;
-    max-width: 700px;
+    width: 700px;
+    max-width: 900px;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 2px 2px #b85b1f;
@@ -55,13 +55,13 @@
     justify-content: flex-end;
 }
 #dicePool {
-    width: 456px;
+    width: 656px;
     height: 35px;
     margin: 10px;
     padding: 10px;
 }
 #diceInHand {
-    width: 456px;
+    width: 656px;
     height: 35px;
     margin: 10px;
     padding: 10px;
@@ -73,7 +73,7 @@
 }
 H1 {
     color: aliceblue;
-    font-family: "Bradley Hand ITC", fantasy;
+    font-family: "Palatino", "Garamond" fantasy;
     text-align: center;
 }
 body {

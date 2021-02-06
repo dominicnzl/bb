@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Player Listpage</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <tr>
+            <th>Player name</th>
+            <th>MA</th>
+            <th>ST</th>
+            <th>AG</th>
+            <th>AV</th>
+            <th>PA</th>
+        </tr>
+        <tr th:each="player : ${players}">
+            <td>
+                <a href="#" th:text="${player.name}" th:href="@{|/players/${player.id}|}">filler text</a>
+            </td>
+            <td th:text="${player.movementAllowance}"></td>
+            <td th:text="${player.strength}"></td>
+            <td th:text="${player.agility}"></td>
+            <td th:text="${player.armourValue}"></td>
+            <td th:text="${player.passing}"></td>
+        </tr>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+</body>
+</html>

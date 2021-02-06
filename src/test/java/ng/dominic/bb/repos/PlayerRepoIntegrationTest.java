@@ -16,7 +16,7 @@ class PlayerRepoIntegrationTest {
     private PlayerRepo playerRepo;
 
     @Test
-    public void whenCalledSave_thenCorrectNumberOfPlayers() {
+    public void whenPlayerIsSavedCanBeFound() {
         Player morg = new Player();
         morg.setName("Morg");
         morg.setMovementAllowance(4);

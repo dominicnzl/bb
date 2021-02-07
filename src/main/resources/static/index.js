@@ -25,19 +25,16 @@ async function turnToJson(response) {
 async function createDraggableButtons(json) {
     try {
         console.log(json);
-        let counter = 0; // need to think about a nice way to get a unique id. perhaps have it generated from back-end
-        json.forEach(diceName => {
-            createBtn(diceName, counter);
-        });
+        json.forEach(diceName => createBtn(diceName));
     } catch (e) {
         console.log(e);
     }
 }
 
-function createBtn(diceName, counter) {
+function createBtn(diceName) {
     const btn = document.createElement("BUTTON");
     btn.innerText = diceName;
-    btn.id = `${diceName}_${counter++}`;
+    btn.id = `${diceName}`;
     btn.name = diceName;
     btn.setAttribute("class", "btn-die");
     btn.setAttribute("draggable", "true");

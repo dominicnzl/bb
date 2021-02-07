@@ -16,5 +16,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 15
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - run: npm install
+        
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify

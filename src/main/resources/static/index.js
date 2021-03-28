@@ -1,25 +1,12 @@
 function init() {
-    getChoices()
-        .then(turnToJson)
+    getChoicesAsJson()
         .then(createDraggableButtons)
         .catch(handleErrors);
 }
 
-async function getChoices() {
+async function getChoicesAsJson() {
     let choices = await fetch("http://localhost:8080/choices");
-    if (!choices.ok) {
-        throw new Error(`Something went wrong at the fetch: ${choices.status}, ${choices.statusText}`);
-    } else {
-        return choices;
-    }
-}
-
-async function turnToJson(response) {
-    try {
-        return await response.json();
-    } catch (e) {
-        console.log(`Turning response into json did not work: ${e}`);
-    }
+    return await choices.json();
 }
 
 async function createDraggableButtons(json) {
@@ -63,10 +50,12 @@ async function roll(diceNames) {
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({dice: diceNames})
         });
-    let json = await turnToJson(response);
+    let json = await response.json();
     console.log(json);
     json.values.forEach(v => {
-        addDiv(v.value0, v.value1);
+        let [result, diceType] = [v.value0, v.value1];
+        console.log(`result is ${result} and type is ${diceType}`)
+        addDiv(result, diceType);
     })
 }
 

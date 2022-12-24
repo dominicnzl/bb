@@ -1,9 +1,17 @@
 package ng.dominic.bb.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
 import java.util.Objects;
 
 @Entity
+@Table(name = "player")
 @SequenceGenerator(name = "seqGen", allocationSize = 1)
 public class Player {
 
@@ -16,10 +24,10 @@ public class Player {
     private String name;
 
     @Column
-    private int movementAllowance;
+    private Integer movementAllowance;
 
     @Column
-    private int strength;
+    private Integer strength;
 
     @Column
     private Integer agility;
@@ -31,7 +39,7 @@ public class Player {
     private Integer passing;
 
     @Column
-    private int price;
+    private Integer price;
 
     public Player() {
     }
@@ -52,19 +60,19 @@ public class Player {
         this.name = name;
     }
 
-    public int getMovementAllowance() {
+    public Integer getMovementAllowance() {
         return movementAllowance;
     }
 
-    public void setMovementAllowance(int movementAllowance) {
+    public void setMovementAllowance(Integer movementAllowance) {
         this.movementAllowance = movementAllowance;
     }
 
-    public int getStrength() {
+    public Integer getStrength() {
         return strength;
     }
 
-    public void setStrength(int strength) {
+    public void setStrength(Integer strength) {
         this.strength = strength;
     }
 
@@ -92,11 +100,11 @@ public class Player {
         this.passing = passing;
     }
 
-    public int getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -105,14 +113,7 @@ public class Player {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Player player = (Player) o;
-        return movementAllowance == player.movementAllowance &&
-                strength == player.strength &&
-                agility.equals(player.agility) &&
-                armourValue.equals(player.armourValue) &&
-                passing.equals(player.passing) &&
-                price == player.price &&
-                id.equals(player.id) &&
-                name.equals(player.name);
+        return id.equals(player.id);
     }
 
     @Override

@@ -40,7 +40,7 @@ public class PlayerController {
         var dto = playerService.findAll()
                 .stream()
                 .map(this::convertToDTO)
-                .collect(Collectors.toList());
+                .toList();
         return ResponseEntity.ok(dto);
     }
 
